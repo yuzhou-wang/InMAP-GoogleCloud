@@ -1,0 +1,6 @@
+steps:
+# Build the alpine and debian versions.
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-f', 'docker/Dockerfile', '--tag=gcr.io/$PROJECT_ID/whitebelt', '.']
+images: ['gcr.io/$PROJECT_ID/whitebelt']
+timeout: 3600s
