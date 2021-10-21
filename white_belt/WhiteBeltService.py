@@ -109,7 +109,7 @@ class WhiteBeltService:
     ## TODO: I don't understand this part, we can discuss about it.
     def __init__(self) -> None:
         # Run all precalculated/reusable operations
-        self.latlon_cross = pd.read_csv("./white_belt/latlon_cross.csv",index_col=0)
+        self.latlon_cross = pd.read_csv("./latlon_cross.csv",index_col=0)
         
         # all_slices = []
         # for slice in slices:
