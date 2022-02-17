@@ -1,9 +1,12 @@
-FROM python:3.9
+FROM python:3.8.0
 
-WORKDIR /code
-COPY ./requirements.txt /code/requirements.txt
-RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
+WORKDIR /app
 
-COPY ./app /code/app
+COPY requirements.txt requirements.txt
+RUN pip install --no-cache-dir --upgrade -r requirements.txt
 
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "80"]
+COPY app.py  app.py
+COPY WhiteBeltService.py  WhiteBeltService.py
+COPY latlon_cross.csv  latlon_cross.csv
+
+CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8080"]
