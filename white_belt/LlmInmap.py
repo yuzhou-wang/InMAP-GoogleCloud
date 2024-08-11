@@ -35,9 +35,13 @@ class LlmInmap:
         if type(receptor_lon) == type("string"):
             receptor_lon = float(receptor_lon)
         reduction_value = float(input_dict["emission_value"].split(" ")[0])
+        reduction_value_with_unit = input_dict["emission_value"]
+        source_name = input_dict["source_place"]["original_value"]
+        receptor_name = input_dict["receptor_place"]["original_value"]
 
         pollution_change = white_belt_service.calculate(stack_height=stack_height, 
     pollutant=pollutant, source_lat=source_lat, 
     source_lon=source_lon, receptor_lat=receptor_lat, receptor_lon=receptor_lon, reduction_value=reduction_value)
-        return pollution_change
+        print_text = f"The influence of {reduction_value_with_unit} {pollutant} pollution from {source_name} leads to the increase of PM2.5 concentration on {receptor_name} by {pollution_change:.2} µg m-3."
+        return print_text
 

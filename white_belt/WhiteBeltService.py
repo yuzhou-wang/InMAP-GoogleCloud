@@ -26,13 +26,14 @@ class StorageClient:
 
     def download(self,filepath, is_downloaded = True):
         if not is_downloaded:
-            destination = "/tmp/" + filepath.split("/")[-1]
+            wget 
+            #destination = "/tmp/" + filepath.split("/")[-1]
             
-            bucket_name = "inmap-uw-dev1"
-            bucket = self.client.get_bucket(bucket_name)
-            blob = bucket.blob(filepath)
-            blob.download_to_filename(destination)
-            print(f"{filepath} downloaded to {destination}.")
+            #bucket_name = "inmap-uw-dev1"
+            #bucket = self.client.get_bucket(bucket_name)
+            #blob = bucket.blob(filepath)
+            #blob.download_to_filename(destination)
+            #print(f"{filepath} downloaded to {destination}.")
         else:
             destination = f"""/home/yuzhou/Downloads/InMAP/{filepath.split("/")[-1]}"""
             print(f"file already exists in {destination}")
