@@ -42,6 +42,6 @@ class LlmInmap:
         pollution_change = white_belt_service.calculate(stack_height=stack_height, 
     pollutant=pollutant, source_lat=source_lat, 
     source_lon=source_lon, receptor_lat=receptor_lat, receptor_lon=receptor_lon, reduction_value=reduction_value)
-        print_text = f"The influence of {reduction_value_with_unit} {pollutant} pollution from {source_name} leads to the increase of PM2.5 concentration on {receptor_name} by {pollution_change:.2} µg m-3."
+        print_text = f"The {reduction_value_with_unit} of {pollutant} air pollution from {source_name} results in a {pollution_change:.2} µg m-3 increase in PM2.5 concentration at {receptor_name}."
         return print_text
-
+        
