@@ -61,7 +61,7 @@ async def llm_inmap_app(info: Request):
 
 @app.get('/interaction')
 def interaction_llm_post(request: Request):
-    result = 'Type a number test'
+    result = ''
     question = 'How is the Stanford campus affected by San Jose airport?'
     print("open successfully")
     return templates.TemplateResponse('interaction.html', context={'request': request, 'result': result, 'question': question})

@@ -1,17 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Sample Form</title>
+    <title>Interaction</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
+
 <body>
-<form method="post">
-    <input type="text" id = "question" name="question" value="{{ question }}" size="50"/>
-    <!-- <input type="checkbox" id="multiply_by_2" name="multiply_by_2" value="True"> -->
-    <!-- <label for="multiply_by_2">Multiply by 2&nbsp;</label> -->
-    <input type="submit">
-    <!-- <input type="submit" name="action" value="download"> -->
-</form>
-<p>Answer: {{ result }}</p>
+    <div class="container">
+        <h1>InmapLLM</h1>
+        <form method="post">
+            <div class="form-group">
+                <h4><label for="fname">Question:</label> </h4>
+                <p>for example, How is the 2 ton/year emission at San Francisco airport affects the pollution in UC berkeley?</p>
+                <input type="text" class="form-control" id="question" value="{{ question }}" name="question">
+            </div>
+            <button type="submit" value="Submit" class="btn btn-success">Submit</button>
+        </form>
+    </div>
+    <div class="container">
+        <h4>Answer: </h4>
+        <p>{{ result }}</p>
+    </div>
 </body>
+
 </html>
