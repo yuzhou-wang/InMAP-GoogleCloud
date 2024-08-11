@@ -8,4 +8,5 @@ shapely
 pandas
 google-generativeai
 python-dotenv
-wget
+jinja2==3.0.3
+python-multipart

@@ -2,15 +2,17 @@
 # app.py
 from typing import List, Optional
 
-from fastapi import FastAPI, Request
+from fastapi import FastAPI, Request, Form
 from WhiteBeltService import WhiteBeltService, Coordinate
 from LlmQuery import LlmQuery
 from LlmInmap import LlmInmap
+from fastapi.templating import Jinja2Templates
 
 app = FastAPI()
 white_belt_service = WhiteBeltService()
 llm_query = LlmQuery()
 llm_inmap = LlmInmap()
+templates = Jinja2Templates(directory='templates/')
 
 @app.post("/white_belt/single")
 #def read_item(stack_height: float = 0, pollutant: str = "pNO3", source_lat: float = 47.6097, source_lon: float = -122.3422, receptor_lat: float = 47.6555, receptor_lon: float = -122.3032, reduction_value: float = 1):
@@ -53,6 +55,29 @@ async def llm_inmap_app(info: Request):
     input_dict = llm_inmap.dict_from_llm(user_input_inmap = req_info["user_input_inmap"])
     return llm_inmap.inmap_from_dict(input_dict = input_dict)
 
-## curl -XPOST -d '{"user_input_inmap":"How is the 2 ton/year emission at San Francisco airport affects the pollution in UC berkeley?."}' 'http://0.0.0.0:4444/white_belt/llm_inmap'
+## curl -XPOST -d '{"user_input_inmap":"How is the 2 ton/year emission at San Francisco airport affects the pollution in UC berkeley?"}' 'http://0.0.0.0:4444/white_belt/llm_inmap'
 
 ## curl -XPOST -d '{"user_input_inmap":"How is the Stanford campus affected by San Jose airport?."}' 'http://0.0.0.0:4444/white_belt/llm_inmap'
+
+@app.get('/interaction')
+def interaction_llm_post(request: Request):
+    result = 'Type a number test'
+    question = 'How is the Stanford campus affected by San Jose airport?'
+    print("open successfully")
+    return templates.TemplateResponse('interaction.html', context={'request': request, 'result': result, 'question': question})
+
+
+@app.post('/interaction')
+def interaction_llm_post(request: Request, question: str = Form(...)):
+    # result = spell_number(num)
+    # req_info = await request.json()
+    print("request")
+    print(request)
+    print("question")
+    print(question)
+
+
+    input_dict = llm_inmap.dict_from_llm(user_input_inmap = question)
+    result = llm_inmap.inmap_from_dict(input_dict = input_dict)
+    print(result)
+    return templates.TemplateResponse('interaction.html', context={'request': request, 'result': result, 'question': question})
