@@ -1,3 +1,2 @@
 # InMAP-LLM
-Connect InMAP with LLM (Gemini API)
-
+Query information from InMAP using LLM (Gemini API).
