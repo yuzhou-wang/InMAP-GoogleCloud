@@ -127,3 +127,9 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# notes
+white_belt/llm_notes.md
+
+# isrm_belt
+isrm_belt/

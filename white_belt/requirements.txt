@@ -6,3 +6,5 @@ google-cloud-storage==1.42.3
 netCDF4
 shapely
 pandas
+google-generativeai
+python-dotenv
