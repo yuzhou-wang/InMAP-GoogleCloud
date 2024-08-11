@@ -1,2 +1,2 @@
-# UW-GoogleCloud
-Running InMAP-ISRM on google cloud
+# InMAP-LLM
+Connect InMAP with LLM (Gemini API)
